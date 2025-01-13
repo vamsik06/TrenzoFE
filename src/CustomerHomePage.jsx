@@ -12,6 +12,7 @@ export default function CustomerHomePage() {
   const [cartError, setCartError] = useState(false); // State for cart fetch error
   const [isCartLoading, setIsCartLoading] = useState(true); // State for cart loading
 
+
   useEffect(() => {
     fetchProducts();
     if (username) {
