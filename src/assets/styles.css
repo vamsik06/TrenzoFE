@@ -1,3 +1,7 @@
+*::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Edge */
+}
+
 /* General Reset */
 body {
   margin: 0;
@@ -42,8 +46,9 @@ body {
 .form-title {
   font-size: 1.8rem;
   font-weight: bold;
-  color: #00ABE4;
+  color: #032B2C;
   margin-bottom: 20px;
+  font-family:'Montserrat';  
 }
 
 /* Form Content */
@@ -261,6 +266,7 @@ nav button:hover {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+
 }
 
 /* Header */
@@ -285,15 +291,6 @@ nav button:hover {
   gap: 20px;
 }
 
-.header {
-  padding: 10px 20px;
-  background-color: #00ABE4;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
 
 .cart-icon {
   position: relative;
@@ -381,6 +378,8 @@ nav button:hover {
 .main-content {
   flex: 1;
   padding: 20px;
+  text-align: center;
+  overflow: auto;
 }
 
 .product-list {
@@ -443,8 +442,8 @@ nav button:hover {
 
 .footer-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+      justify-content: space-around;
+      align-items: center;
 }
 
 .footer-links a {
@@ -489,8 +488,14 @@ nav button:hover {
   z-index: 100;
 }
 .profile-dropdown:hover .dropdown-menu{
+  background-color: #55cbf2;
+  border-radius: 25px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+  cursor: pointer;
+
 }
 
 /* Logo Container */
@@ -525,4 +530,80 @@ span.username {
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
+}
+
+.maindiv{
+  background-image: url('shipped.jpg');
+background-size: cover;
+background-attachment: fixed;  
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.order-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 800px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-card-header {
+  display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 16px;
+    background: #D9DADA;
+    box-shadow: 0px -5px #D4F4FD;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    font-family: 'Source Sans Pro';
+}
+
+.order-card-body {
+  
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.order-product-image {
+  width: auto;
+  max-width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.order-details {
+  border-radius: 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #F0F0F0;
+  width: 400px;
+  justify-content: center;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+
+.error-message {
+  color: red;
+  font-size: 1rem;
+  text-align: center;
 }
