@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import useravatar from './useravatar.png';
 import './assets/styles.css';
-
 export function ProfileDropdown({ username }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -10,7 +9,6 @@ export function ProfileDropdown({ username }) {
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
-
   const handleLogout = async () => {
     try {
       const response = await fetch('http://localhost:9090/api/auth/logout', {
@@ -28,11 +26,9 @@ export function ProfileDropdown({ username }) {
       console.error('Error during logout:', error);
     }
   };
-
   const handleOrdersClick = () => {
     navigate('/orders'); // Navigate to the orders route
   };
-
   return (
     <div className="profile-dropdown">
       <button className="profile-button" onClick={toggleDropdown}>
