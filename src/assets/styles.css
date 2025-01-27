@@ -655,12 +655,13 @@ background-attachment: fixed;
 .dashboard-header .user-info {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
 }
 
 .dashboard-header .username {
   font-size: 1rem;
   font-weight: bold;
+  margin-top: 10px;
 }
 
 .dashboard-header .dropdown-button {
@@ -681,48 +682,73 @@ background-attachment: fixed;
 .dashboard-content {
   flex: 1;
   padding: 20px;
+  /* width: 100vw; */
+  justify-content: space-around;
+  align-items: center;
+  margin-left: 25px;
 }
 
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Ensure exactly 2 cards per row */
-  gap: 20px;
+  gap: 10px;
   justify-content: center; /* Center align the cards */
+  align-items: center;
+  grid-column: 2;
+ 
 }
 
 .card {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f6f3f3;
+  border-radius: 20px;
+  box-shadow: 0 5px 6px rgba(4, 1, 1, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
   cursor: pointer;
+  width: 650px;
+  border: .5px solid #2a0303;
 }
 
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px);;
   box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
 }
 
 .card-content {
-  padding: 20px;
+  padding: 15px;
 }
 
 .card-title {
   font-size: 1.2rem;
-  font-weight: bold;
-  color: #333;
+    font-weight:bolder;
+    color: #da5151;
+    text-align: center;
+    text-decoration: auto;
+    font-family: sans-serif;
+    background: #8ed5ef;
+    border-radius: 50px;
+    width: 200px;
+    margin: 20px auto;
 }
 
 .card-description {
-  font-size: 1rem;
-  color: #555;
-  margin-top: 5px;
+    font-size: 1rem;
+    color: #000000;
+    margin-top: 5px;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  
 }
-
+.teams{
+  font-size: 0.9rem;
+  color: #10420a;
+ text-decoration: underline;
+}
 .card-team {
   font-size: 0.9rem;
-  color: #888;
-  margin-top: 10px;
+  color: #24025f;
+font-family:Verdana, Geneva, Tahoma, sans-serif;
+font-style: oblique;
+
 }
 
 .card-footer {
