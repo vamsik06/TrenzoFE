@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import useravatar from './useravatar.png';
+import { FiUser } from "react-icons/fi";
 import './assets/styles.css';
+import './styles/header.css';
 export function ProfileDropdown({ username }) {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate(); // Initialize useNavigate hook
@@ -32,17 +34,21 @@ export function ProfileDropdown({ username }) {
   return (
     <div className="profile-dropdown">
       <button className="profile-button" onClick={toggleDropdown}>
-        <img
+          <FiUser size={20}  
+          className="user-avatar"
+          onError={(e) => { e.target.src = 'fallback-logo.png'; }}
+          />
+        {/* <img
           src={useravatar}
           alt="User Avatar"
           className="user-avatar"
           onError={(e) => { e.target.src = 'fallback-logo.png'; }} // Fallback for image error
-        />
+        /> */}
         <span className="username">{username || 'Guest'}</span> {/* Display username */}
       </button>
       {isOpen && (
         <div className="dropdown-menu">
-          <a href="#">Profile</a>
+
           <a onClick={handleOrdersClick}>Orders</a> {/* Handle Orders Click */}
           <button className="profile-button" onClick={handleLogout}>
             Logout

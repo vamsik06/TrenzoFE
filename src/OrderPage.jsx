@@ -3,6 +3,7 @@ import { CategoryNavigation } from './CategoryNavigation';
 import { Header } from './Header';
 import { Footer } from './Footer';
 import './assets/styles.css';
+import './styles/header.css';
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);

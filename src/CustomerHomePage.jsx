@@ -91,10 +91,15 @@ export default function CustomerHomePage() {
       <Header
         cartCount={isCartLoading ? '...' : cartError ? 'Error' : cartCount}
         username={username}
+        onCategoryClick={handleCategoryClick}
       />
-      <nav className="navigation">
-        <CategoryNavigation onCategoryClick={handleCategoryClick} />
-      </nav>
+      {/* Simple hero text below header */}
+      <section className="home-hero">
+        <div className="home-hero-inner">
+          <h1>Welcome to Trenzo</h1>
+          <p>Discover the latest trends in fashion and technology</p>
+        </div>
+      </section>
       <main className="main-content">
         <ProductList products={products} onAddToCart={handleAddToCart} />
       </main>
