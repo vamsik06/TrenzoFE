@@ -46,15 +46,16 @@ const CustomModal = ({ modalType, onClose, onSubmit, response }) => {
         break;
       }
       case "modifyUser": {
-        const formData = new FormData(e.target);
-        const username = formData.get("username");
-        const email = formData.get("email");
-        const role = formData.get("role");
+        const formDataEl = new FormData(e.target);
+        const username = formDataEl.get("username");
+        const email = formDataEl.get("email");
+        const role = formDataEl.get("role");
         const userId = parseInt(inputValue, 10);
-        const data = {
-          username,
-        };
-        onSubmit(userId);
+        if (username || email || role) {
+          onSubmit({ userId, username, email, role });
+        } else {
+          onSubmit({ userId });
+        }
         break;
       }
       case "monthlyBusiness": {
@@ -287,63 +288,63 @@ const CustomModal = ({ modalType, onClose, onSubmit, response }) => {
           </>
         )}
         {modalType === "monthlyBusiness" && (
-          <>
-            <form className="modal-form">
-              {!response && (
-                <>
-                  <div className="modal-form-item">
-                    <label htmlFor="name">Month:</label>
-                    <input
-                      type="number"
-                      id="month"
-                      name="month"
-                      placeholder="10"
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <div className="modal-form-item">
-                    <label htmlFor="name">Year:</label>
-                    <input
-                      type="number"
-                      id="year"
-                      name="year"
-                      placeholder="2025"
-                      onChange={handleInputChange}
-                    />
-                  </div>
-                  <button onClick={handleSubmit}>Sumbit</button>
-                </>
-              )}
-              {response && (
-                <div>
-                  <div className="business-response-item">
-                    <div>Total Business: ₹ </div>
-                    <div>
-                      {response?.dailyBusiness?.totalBusiness?.toFixed(2)}
-                    </div>
-                  </div>
-                  <div className="business-response-item">
-                    <h5>Category Sales</h5>
-                  </div>
-                  {Object.keys(response?.monthlyBusiness?.categorySales)?.map(
-                    (key) => {
-                      return (
-                        <div key={key} className="business-response-item">
-                          <div>{key}</div>
-                          <div>
-                            {response?.monthlyBusiness?.categorySales[key]}
-                          </div>
-                        </div>
-                      );
-                    }
-                  )}
-                </div>
-              )}
+  <>
+    <form className="modal-form">
+      {!response && (
+        <>
+          <div className="modal-form-item">
+            <label htmlFor="month">Month:</label>
+            <input
+              type="number"
+              id="month"
+              name="month"
+              placeholder="10"
+              onChange={handleInputChange}
+            />
+          </div>
+          <div className="modal-form-item">
+            <label htmlFor="year">Year:</label>
+            <input
+              type="number"
+              id="year"
+              name="year"
+              placeholder="2025"
+              onChange={handleInputChange}
+            />
+          </div>
+          <button onClick={handleSubmit}>Submit</button>
+        </>
+      )}
 
-              <button onClick={onClose}>Cancel</button>
-            </form>
-          </>
-        )}
+      {response && (
+        <div>
+          <div className="business-response-item">
+            <div><strong>Total Business: ₹</strong></div>
+            <div>
+              {response?.monthlyBusiness?.totalBusiness?.toFixed(2)}
+            </div>
+          </div>
+
+          <div className="business-response-item">
+            <h5>Category Sales</h5>
+          </div>
+
+          {Object.keys(response?.monthlyBusiness?.categorySales || {}).map(
+            (key) => (
+              <div key={key} className="business-response-item">
+                <div>{key}</div>
+                <div>{response.monthlyBusiness.categorySales[key]}</div>
+              </div>
+            )
+          )}
+        </div>
+      )}
+
+      <button onClick={onClose}>Cancel</button>
+    </form>
+  </>
+)}
+
 
         {modalType === "dailyBusiness" && (
           <>
@@ -566,13 +567,13 @@ const ModifyUserFormComponent = ({ onClose }) => {
     return (
       <form onSubmit={handleFetchUser}>
         <div className="modal-form-item">
-          <label for="user-id">User ID:</label>
+          <label htmlFor="user-id">User ID:</label>
           <input
             type="text"
             id="user-id"
             name="user-id"
-            value={userId}
-            onChange={(e) => userId(e.target.value)}
+            value={userId ?? ''}
+            onChange={(e) => setUserId(e.target.value)}
           />
         </div>
         <button type="submit">Get User</button>
@@ -585,17 +586,17 @@ const ModifyUserFormComponent = ({ onClose }) => {
       <div>
         <form onSubmit={handleUpdateUser} className="modal-form">
           <div className="modal-form-item">
-            <label for="user-id">User ID:</label>
+            <label htmlFor="user-id">User ID:</label>
             <input
               type="text"
               id="user-id"
               name="user-id"
               value="17"
-              readonly
+              readOnly
             />
           </div>
           <div className="modal-form-item">
-            <label for="username">Username:</label>
+            <label htmlFor="username">Username:</label>
             <input
               type="text"
               id="username"
@@ -605,7 +606,7 @@ const ModifyUserFormComponent = ({ onClose }) => {
           </div>
 
           <div className="modal-form-item">
-            <label for="email">Email:</label>
+            <label htmlFor="email">Email:</label>
             <input
               type="email"
               id="email"
@@ -614,7 +615,7 @@ const ModifyUserFormComponent = ({ onClose }) => {
             />
           </div>
           <div className="modal-form-item">
-            <label for="role">Role:</label>
+            <label htmlFor="role">Role:</label>
             <input
               type="text"
               id="role"

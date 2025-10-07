@@ -8,7 +8,7 @@ export default function Logo() {
 
   return (
     <div>
-      <span className="logo-text">Trenzo</span>
+      <span className="logo-text" onClick={() => navigate('/customerhome')} style={{cursor: 'pointer'}}>Trenzo</span>
     </div>
   );
 }

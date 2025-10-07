@@ -122,7 +122,7 @@ const CartPage = () => {
         key: "rzp_test_LqWBBDbgwot5lh", // Replace with your Razorpay Key ID
         amount: subtotal * 100, // Razorpay expects amount in paise
         currency: "INR",
-        name: "SalesSavvy",
+        name: "Trenzo",
         description: "Test Transaction",
         order_id: razorpayOrderId,
         handler: async function (response) {
